@@ -1,17 +1,5 @@
 # hangga_cubit
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# hangga_cubit
+![Screenshot_20221008_173454](https://user-images.githubusercontent.com/36717925/194703547-2d972b5f-d89e-4c66-a5db-78c369e96e6f.jpg)
+![Screenshot_20221008_173416](https://user-images.githubusercontent.com/36717925/194703552-5cf88b32-9e72-41bf-837c-d8d2e8832c24.jpg)
+![Screenshot_20221008_173603](https://user-images.githubusercontent.com/36717925/194703553-48807786-99b2-4192-a50a-6c651fffc6e4.jpg)
