@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901038688309",
+    "project_id": "airplane-35331",
+    "storage_bucket": "airplane-35331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901038688309:android:e3b1da5c19c93e743e897c",
+        "android_client_info": {
+          "package_name": "com.hangga.hangga_cubit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901038688309-uvra5ck4l2qf6e67mmogmbcao9iteq8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhz28GE2FUDlxiOj_bcXe5c4SzklGl_vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901038688309-uvra5ck4l2qf6e67mmogmbcao9iteq8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
