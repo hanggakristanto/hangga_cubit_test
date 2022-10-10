@@ -6,6 +6,7 @@ import 'package:hangga_cubit/ui/pages/sign_in_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hangga_cubit/ui/pages/sign_up_page.dart';
 import 'ui/pages/splash_page.dart';
 
 void main() async {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashPage(),
           '/sign-in': (context) => SignInPage(),
           '/main': (context) => const MainPage(),
+          '/sign-up': (context) => SignUpPage(),
         },
       ),
     );

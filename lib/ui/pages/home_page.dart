@@ -2,7 +2,6 @@ import 'package:hangga_cubit/cubit/auth_cubit.dart';
 import 'package:hangga_cubit/cubit/destination_cubit.dart';
 import 'package:hangga_cubit/models/destination_model.dart';
 import 'package:hangga_cubit/shared/theme.dart';
-import 'package:hangga_cubit/ui/widgets/destination_card.dart';
 import 'package:hangga_cubit/ui/widgets/destination_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,17 +39,20 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Welcome,\n${state.user.name}',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 24,
-                            fontWeight: semiBold,
+                          'Rumah Sakit',
+                          style: greyTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: light,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(
-                          height: 6,
                         ),
                       ],
+                    ),
+                  ),
+                  Text(
+                    'Lihat Semua',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: light,
                     ),
                   ),
                 ],
@@ -63,21 +65,176 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget firstContent(List<DestinationModel> destinations) {
+    Widget menuOne() {
       return Container(
         margin: const EdgeInsets.only(top: 30),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: destinations.map((DestinationModel destination) {
-              return DestinationCard(destination);
-            }).toList(),
+            children: [
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("SEMUA"),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("BPJS"),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Partner"),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Tersedia"),
+              ),
+            ],
           ),
         ),
       );
     }
 
-    Widget secondContent(List<DestinationModel> destinations) {
+    Widget dataOne(List<DestinationModel> destinations) {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 10,
+          left: defaultMargin,
+          right: defaultMargin,
+          bottom: 30,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: destinations.map((DestinationModel destination) {
+                return DestinationTile(destination);
+              }).toList(),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget menuTwo() {
+      return Container(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Banner 1"),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Banner 2"),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Banner "),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                height: 100,
+                width: 150,
+                alignment: Alignment.center,
+                child: const Text("Banner 4"),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget klinik() {
+      return Container(
+        margin: EdgeInsets.only(
+          left: defaultMargin,
+          right: defaultMargin,
+          top: 30,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Klinik',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: light,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              'Lihat Semua',
+              style: greyTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: light,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget newDestinations(List<DestinationModel> destinations) {
       return Container(
         margin: EdgeInsets.only(
           top: 30,
@@ -114,8 +271,12 @@ class _HomePageState extends State<HomePage> {
           return ListView(
             children: [
               header(),
-              firstContent(state.destinations),
-              secondContent(state.destinations),
+              menuOne(),
+              dataOne(state.destinations),
+              // popularDestinations(state.destinations),
+              menuTwo(),
+              klinik(),
+              newDestinations(state.destinations),
             ],
           );
         }

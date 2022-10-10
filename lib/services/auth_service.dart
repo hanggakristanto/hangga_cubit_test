@@ -27,7 +27,7 @@ class AuthService {
       {required String email,
       required String password,
       required String name,
-      String hobby = ''}) async {
+      String phone = ''}) async {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);

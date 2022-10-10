@@ -17,6 +17,10 @@ class MainPage extends StatelessWidget {
           return const HomePage();
         case 1:
           return const SettingPage();
+        case 2:
+          return const SettingPage();
+        case 3:
+          return const SettingPage();
         default:
           return const HomePage();
       }
@@ -46,7 +50,15 @@ class MainPage extends StatelessWidget {
               ),
               CustomBottomNavigationItem(
                 index: 1,
-                imageUrl: 'assets/button_exit.png',
+                imageUrl: 'assets/icon_home.png',
+              ),
+              CustomBottomNavigationItem(
+                index: 2,
+                imageUrl: 'assets/icon_home.png',
+              ),
+              CustomBottomNavigationItem(
+                index: 3,
+                imageUrl: 'assets/icon_home.png',
               ),
             ],
           ),
@@ -58,6 +70,26 @@ class MainPage extends StatelessWidget {
       builder: (context, currentIndex) {
         return Scaffold(
           backgroundColor: kBackgroundColor,
+          appBar: AppBar(
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {},
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
+                );
+              },
+            ),
+            title: const Text("Valbury"),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.add_alert),
+                tooltip: 'Show Snackbar',
+                onPressed: () {},
+              ),
+            ],
+          ),
           body: Stack(
             children: [
               buildContent(currentIndex),

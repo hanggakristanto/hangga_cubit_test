@@ -4,25 +4,40 @@ import 'package:hangga_cubit/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/theme.dart';
-import 'package:lottie/lottie.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  SignUpPage({Key? key}) : super(key: key);
 
+  final TextEditingController nameController = TextEditingController(text: '');
   final TextEditingController emailController = TextEditingController(text: '');
   final TextEditingController passwordController =
       TextEditingController(text: '');
+  final TextEditingController phoneController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
     Widget title() {
       return Container(
         margin: const EdgeInsets.only(top: 30),
-        child: Lottie.asset('assets/food.json', height: 200),
+        child: Text(
+          'Sudah punya akun? Login sekarang',
+          style: blackTextStyle.copyWith(
+            fontSize: 24,
+            fontWeight: semiBold,
+          ),
+        ),
       );
     }
 
     Widget inputSection() {
+      Widget nameInput() {
+        return CustomTextFormField(
+          title: 'Full Name',
+          hintText: 'Your full name',
+          controller: nameController,
+        );
+      }
+
       Widget emailInput() {
         return CustomTextFormField(
           title: 'Email Address',
@@ -40,12 +55,20 @@ class SignInPage extends StatelessWidget {
         );
       }
 
+      Widget hobbyInput() {
+        return CustomTextFormField(
+          title: 'Phone',
+          hintText: 'Your Phone',
+          controller: phoneController,
+        );
+      }
+
       Widget submitButton() {
         return BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushNamedAndRemoveUntil(
-                  context, '/main', (route) => false);
+                  context, '/bonus', (route) => false);
             } else if (state is AuthFailed) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -63,12 +86,13 @@ class SignInPage extends StatelessWidget {
             }
 
             return CustomButton(
-              title: 'Sign In',
+              title: 'Get Started',
               onPressed: () {
-                context.read<AuthCubit>().signIn(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
+                context.read<AuthCubit>().signUp(
+                    email: emailController.text,
+                    password: passwordController.text,
+                    name: nameController.text,
+                    phone: phoneController.text);
               },
             );
           },
@@ -89,18 +113,20 @@ class SignInPage extends StatelessWidget {
         ),
         child: Column(
           children: [
+            nameInput(),
             emailInput(),
             passwordInput(),
+            hobbyInput(),
             submitButton(),
           ],
         ),
       );
     }
 
-    Widget signUp() {
+    Widget signInButton() {
       return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/sign-up');
+          Navigator.pushNamed(context, '/sign-in');
         },
         child: Container(
           alignment: Alignment.center,
@@ -109,7 +135,7 @@ class SignInPage extends StatelessWidget {
             bottom: 73,
           ),
           child: Text(
-            'Belum punya akun? Daftar sekarang? ',
+            'Sudah punya akun? Login sekarang?',
             style: greyTextStyle.copyWith(
               fontSize: 16,
               fontWeight: light,
@@ -130,7 +156,7 @@ class SignInPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
-            signUp(),
+            signInButton(),
           ],
         ),
       ),

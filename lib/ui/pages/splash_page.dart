@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -43,7 +42,12 @@ class _SplashPageState extends State<SplashPage> {
               width: 200,
               height: 200,
               margin: const EdgeInsets.only(bottom: 50),
-              child: Lottie.asset('assets/food.json'),
+              child: Image.asset(
+                "assets/logo.png",
+                width: 64.0,
+                height: 64.0,
+                fit: BoxFit.fill,
+              ),
             ),
             Text(
               'MY App',
